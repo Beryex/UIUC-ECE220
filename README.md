@@ -5,7 +5,7 @@ Instructors:
 [Pavel Loskot](pavelloskot@intl.zju.edu.cn) @ Zhejiang University - University of Illinois Urbana-Champaign Institute  
 
 This work is protected under the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html).  
-**Copyright (c) 2023 Bryan Wang, Lumetta Steven Sam, Pavel Loskot**
+**Copyright (c) 2022 Bryan Wang, Lumetta Steven Sam, Pavel Loskot**
 
 ## DISCLAIMER
 If you would like to incorporate any portion of code in this repository into your own work, please cite as follows:
