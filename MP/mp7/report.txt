@@ -1,0 +1,768 @@
+PUT YOUR MP7 REPORT IN THIS FILE.
+
+For printRev:
+
+This code will print the reverse of the input string s, and print the length of the
+string.
+To implement it, the code calls the function print_reverse, and use rest to denote 
+the length of the string.
+The argument that main takes: argc, argv[]
+The argument that print_reverse takes: s
+
+ The error is that sometimes the length of the string in the output is wrong.
+
+1. Identifying the bug:
+	
+correct executions: 	
+
+test case1: 
+input: "123"
+
+desired output: 
+9 8 7 6 5 4 3 2 1 0
+What's on the stack now?
+
+"123" reversed is "321" (length 3)
+
+actual output:
+9 8 7 6 5 4 3 2 1 0
+What's on the stack now?
+
+"123" reversed is "321" (length 3)
+
+test case2: 
+input: ""
+
+desired output: 
+9 8 7 6 5 4 3 2 1 0
+What's on the stack now?
+
+"" reversed is "" (length 0)
+
+actual output:
+9 8 7 6 5 4 3 2 1 0
+What's on the stack now?
+
+"" reversed is "" (length 0)
+		
+test case3:
+input: "wasdeqxz"
+
+desired output:
+9 8 7 6 5 4 3 2 1 0
+What's on the stack now?
+
+"wasdeqxz" reversed is "zxqedsaw" (length 8)
+
+actual output:
+9 8 7 6 5 4 3 2 1 0
+What's on the stack now?
+
+"wasdeqxz" reversed is "zxqedsaw" (length 8)
+
+	
+erroneous executions: 
+
+test case1: 
+input: "ece220"
+
+desired output: 
+9 8 7 6 5 4 3 2 1 0
+What's on the stack now?
+
+"ece220" reversed is "022ece" (length 6)
+
+actual output:
+9 8 7 6 5 4 3 2 1 0
+What's on the stack now?
+
+"ece220" reversed is "022ece" (length 32773)
+			
+test case2:
+input: "12345"
+
+desired output:
+9 8 7 6 5 4 3 2 1 0
+What's on the stack now?
+
+"12345" reversed is "54321" (length 5)
+
+actual output:
+9 8 7 6 5 4 3 2 1 0
+What's on the stack now?
+
+"12345" reversed is "54321" (length 32772)
+
+test case3:
+input: "1A2B3"
+
+desired output:
+9 8 7 6 5 4 3 2 1 0
+What's on the stack now?
+
+"1A2B3" reversed is "3B2A1" (length 5)
+
+actual output:
+9 8 7 6 5 4 3 2 1 0
+What's on the stack now?
+
+"1A2B3" reversed is "3B2A1" (length 32772)
+
+
+2. Trace the bug
+
+The GDB commands I used and results GDB produced:
+
+command:
+break pr_buggy.c:41
+break pr_buggy.c:52
+r really
+
+output1:
+
+Breakpoint 1, print_reverse (s=0x7ffffffee3ed "") at pr_buggy.c:41
+41              return rest;
+
+command:
+p rest
+
+output2:
+$3 = 32767
+
+Analysis the relationship between the output and the erroneous behaviour:
+According to output2, the wrong output of the length of the string may because of the 
+wrong value of the variable rest as it is not initialized.
+
+
+3. Analysis of the bug:
+When the pointer points to the end of the string, it will return variable rest. According 
+to the output produced by GDB, the value of variable rest is not initialized to 0 and its
+initial value is 32767, which is the root cause of the bug. For printRev, the returned 
+value "rest" is the length of the string. And the erroneous behaviour is that the length 
+of the string sometimes is wrong. So the uninitialized variable "rest" results in this behaviour.
+To fix this bug, we should replace the varibale "rest" with integer 0 in line 41 in pr_buggy.c
+ 
+
+
+
+For primeNumber:
+
+1. Identifying the bug:
+
+primeNumber only has erroneous behaviour
+
+test cases:
+Input: None
+
+Desired output:
+2 is prime.
+3 is prime.
+5 is prime.
+7 is prime.
+11 is prime.
+13 is prime.
+17 is prime.
+19 is prime.
+23 is prime.
+29 is prime.
+31 is prime.
+37 is prime.
+41 is prime.
+43 is prime.
+47 is prime.
+53 is prime.
+59 is prime.
+61 is prime.
+67 is prime.
+71 is prime.
+73 is prime.
+79 is prime.
+83 is prime.
+89 is prime.
+97 is prime.
+101 is prime.
+103 is prime.
+107 is prime.
+109 is prime.
+113 is prime.
+127 is prime.
+131 is prime.
+137 is prime.
+139 is prime.
+149 is prime.
+151 is prime.
+157 is prime.
+163 is prime.
+167 is prime.
+173 is prime.
+179 is prime.
+181 is prime.
+191 is prime.
+193 is prime.
+197 is prime.
+199 is prime.
+211 is prime.
+223 is prime.
+227 is prime.
+229 is prime.
+233 is prime.
+239 is prime.
+241 is prime.
+251 is prime.
+257 is prime.
+263 is prime.
+269 is prime.
+271 is prime.
+277 is prime.
+281 is prime.
+283 is prime.
+293 is prime.
+307 is prime.
+311 is prime.
+313 is prime.
+317 is prime.
+331 is prime.
+337 is prime.
+347 is prime.
+349 is prime.
+353 is prime.
+359 is prime.
+367 is prime.
+373 is prime.
+379 is prime.
+383 is prime.
+389 is prime.
+397 is prime.
+401 is prime.
+409 is prime.
+419 is prime.
+421 is prime.
+431 is prime.
+433 is prime.
+439 is prime.
+443 is prime.
+449 is prime.
+457 is prime.
+461 is prime.
+463 is prime.
+467 is prime.
+479 is prime.
+487 is prime.
+491 is prime.
+499 is prime.
+503 is prime.
+509 is prime.
+521 is prime.
+523 is prime.
+541 is prime.
+547 is prime.
+557 is prime.
+563 is prime.
+569 is prime.
+571 is prime.
+577 is prime.
+587 is prime.
+593 is prime.
+599 is prime.
+601 is prime.
+607 is prime.
+613 is prime.
+617 is prime.
+619 is prime.
+631 is prime.
+641 is prime.
+643 is prime.
+647 is prime.
+653 is prime.
+659 is prime.
+661 is prime.
+673 is prime.
+677 is prime.
+683 is prime.
+691 is prime.
+701 is prime.
+709 is prime.
+719 is prime.
+727 is prime.
+733 is prime.
+739 is prime.
+743 is prime.
+751 is prime.
+757 is prime.
+761 is prime.
+769 is prime.
+773 is prime.
+787 is prime.
+797 is prime.
+809 is prime.
+811 is prime.
+821 is prime.
+823 is prime.
+827 is prime.
+829 is prime.
+839 is prime.
+853 is prime.
+857 is prime.
+859 is prime.
+863 is prime.
+877 is prime.
+881 is prime.
+883 is prime.
+887 is prime.
+907 is prime.
+911 is prime.
+919 is prime.
+929 is prime.
+937 is prime.
+941 is prime.
+947 is prime.
+953 is prime.
+967 is prime.
+971 is prime.
+977 is prime.
+983 is prime.
+991 is prime.
+997 is prime.
+
+Actual output:
+2 is prime.
+3 is prime.
+4 is prime.
+5 is prime.
+7 is prime.
+9 is prime.
+11 is prime.
+13 is prime.
+17 is prime.
+19 is prime.
+23 is prime.
+25 is prime.
+29 is prime.
+31 is prime.
+37 is prime.
+41 is prime.
+43 is prime.
+47 is prime.
+49 is prime.
+53 is prime.
+59 is prime.
+61 is prime.
+67 is prime.
+71 is prime.
+73 is prime.
+79 is prime.
+83 is prime.
+89 is prime.
+97 is prime.
+101 is prime.
+103 is prime.
+107 is prime.
+109 is prime.
+113 is prime.
+121 is prime.
+127 is prime.
+131 is prime.
+137 is prime.
+139 is prime.
+149 is prime.
+151 is prime.
+157 is prime.
+163 is prime.
+167 is prime.
+169 is prime.
+173 is prime.
+179 is prime.
+181 is prime.
+191 is prime.
+193 is prime.
+197 is prime.
+199 is prime.
+211 is prime.
+223 is prime.
+227 is prime.
+229 is prime.
+233 is prime.
+239 is prime.
+241 is prime.
+251 is prime.
+257 is prime.
+263 is prime.
+269 is prime.
+271 is prime.
+277 is prime.
+281 is prime.
+283 is prime.
+289 is prime.
+293 is prime.
+307 is prime.
+311 is prime.
+313 is prime.
+317 is prime.
+331 is prime.
+337 is prime.
+347 is prime.
+349 is prime.
+353 is prime.
+359 is prime.
+361 is prime.
+367 is prime.
+373 is prime.
+379 is prime.
+383 is prime.
+389 is prime.
+397 is prime.
+401 is prime.
+409 is prime.
+419 is prime.
+421 is prime.
+431 is prime.
+433 is prime.
+439 is prime.
+443 is prime.
+449 is prime.
+457 is prime.
+461 is prime.
+463 is prime.
+467 is prime.
+479 is prime.
+487 is prime.
+491 is prime.
+499 is prime.
+503 is prime.
+509 is prime.
+521 is prime.
+523 is prime.
+529 is prime.
+541 is prime.
+547 is prime.
+557 is prime.
+563 is prime.
+569 is prime.
+571 is prime.
+577 is prime.
+587 is prime.
+593 is prime.
+599 is prime.
+601 is prime.
+607 is prime.
+613 is prime.
+617 is prime.
+619 is prime.
+631 is prime.
+641 is prime.
+643 is prime.
+647 is prime.
+653 is prime.
+659 is prime.
+661 is prime.
+673 is prime.
+677 is prime.
+683 is prime.
+691 is prime.
+701 is prime.
+709 is prime.
+719 is prime.
+727 is prime.
+733 is prime.
+739 is prime.
+743 is prime.
+751 is prime.
+757 is prime.
+761 is prime.
+769 is prime.
+773 is prime.
+787 is prime.
+797 is prime.
+809 is prime.
+811 is prime.
+821 is prime.
+823 is prime.
+827 is prime.
+829 is prime.
+839 is prime.
+841 is prime.
+853 is prime.
+857 is prime.
+859 is prime.
+863 is prime.
+877 is prime.
+881 is prime.
+883 is prime.
+887 is prime.
+907 is prime.
+911 is prime.
+919 is prime.
+929 is prime.
+937 is prime.
+941 is prime.
+947 is prime.
+953 is prime.
+961 is prime.
+967 is prime.
+971 is prime.
+977 is prime.
+983 is prime.
+991 is prime.
+997 is prime.
+
+
+2. Trace the bug:
+
+The GDB commands I used and results GDB produced:
+
+command:
+break primeNumber.c:67
+r
+
+output1:
+2 is prime.
+3 is prime.
+4 is prime.
+
+Breakpoint 1, divides_evenly (divisor=2, value=5) at primeNumber.c:67
+67          multiple = (value / divisor) * divisor;
+
+command:
+c
+c
+c
+c
+
+output2:
+Continuing.
+
+Breakpoint 1, divides_evenly (divisor=2, value=9) at primeNumber.c:67
+67          multiple = (value / divisor) * divisor;
+
+command:
+c
+
+output3:
+Continuing.
+9 is prime.
+
+Breakpoint 1, divides_evenly (divisor=2, value=10) at primeNumber.c:67
+67          multiple = (value / divisor) * divisor;
+
+command:
+c
+
+output4:
+Continuing.
+
+Breakpoint 1, divides_evenly (divisor=2, value=11) at primeNumber.c:67
+67          multiple = (value / divisor) * divisor;
+
+command:
+c
+
+output5:
+Continuing.
+
+Breakpoint 1, divides_evenly (divisor=3, value=11) at primeNumber.c:67
+67          multiple = (value / divisor) * divisor;
+
+command:
+c
+
+output6:
+Continuing.
+11 is prime.
+
+Breakpoint 1, divides_evenly (divisor=2, value=12) at primeNumber.c:67
+67          multiple = (value / divisor) * divisor;
+
+Analysis the relationship between the output and the erroneous behaviour:
+According to the output, for the value from 5 to 11, the value of the divisor is always
+less than the value of (value ^ 0.5). So when (value ^ 0.5) is an integer, the code will
+misconsider the value to be a prime, resulting in the erroneous behaviour.
+
+
+Analysis of the bug:
+According to the analysis above, the cause of the bug is that in the "for loop" for checking
+if an integer is prime, the judgment condition was wrong. Because the "for loop" stops 
+when the divisor >= (value * 0.5), so there will be a erroneous behaviour when (value * 0.5)
+is an integer. To be specific, the bug line is something like: 
+for(divisor = 2; divisor < sqrt(num); divisor++){
+where sqrt(num) needs to include<math.h>.
+The output from GDB confirms our analysis as the code print "4 is prime" without
+calling the function divides_evenly.
+
+
+
+For sort:
+
+1. Identifying the bug:
+
+correct executions: 	
+
+test case1: 
+intput: test1.txt
+contains in test1.txt:
+20
+1 22 3 45 51 96 117 18 29 13 9 100 41 23 12 99 15 19 58 97
+
+Desired output:
+1 3 9 12 13 15 18 19 22 23 29 41 45 51 58 96 97 99 100 117
+
+Actual output:
+1 3 9 12 13 15 18 19 22 23 29 41 45 51 58 96 97 99 100 117 
+
+test case2:
+intput: test1.txt
+contains in test1.txt:
+10
+1 8 2 9 3 4 5 5 6 7
+
+Desired output:
+1 2 3 4 5 5 6 7 8 9
+
+Actual output:
+1 2 3 4 5 5 6 7 8 9 
+
+test case3:
+intput: test1.txt
+contains in test1.txt:
+5
+1 -1 2 0 2
+
+Desired output:
+-1 0 1 2 2 
+
+Actual output:
+-1 0 1 2 2  
+
+
+erroneous behaviour:
+
+test case1:
+intput: test1.txt
+contains in test1.txt:
+20
+1 22 3 45 51 96 117 18 29 13 9 100 41 23 12 99 15 19 58 97
+
+Desired output:
+1 3 9 12 13 15 18 19 22 23 29 41 45 51 58 96 97 99 100 117
+
+Actual output:
+1 3 9 12 13 15 18 19 22 23 29 41 45 51 58 96 97 99 99 100 
+
+test case2:
+intput: test1.txt
+contains in test1.txt:
+10
+1 8 2 9 3 4 5 5 6 7
+
+Desired output:
+1 2 3 4 5 5 6 7 8 9
+
+Actual output:
+1 2 3 4 5 5 5 6 7 8 
+
+test case3:
+intput: test1.txt
+contains in test1.txt:
+5
+-2 2 6 7 1
+
+Desired output:
+-2 1 2 6 7 
+
+Actual output:
+-2 1 1 2 6 
+
+
+2. Trace the bug:
+
+The GDB commands I used and results GDB produced:
+
+the test1.txt contains:
+5
+-2 2 6 7 1
+
+First execute case:
+commands:
+break sort.c:14
+break sort.c:35
+break sort.c:38
+break sort.c:6
+r test1.txt
+c
+c
+c
+c
+c
+c
+c
+c
+c
+
+output1:
+Continuing.
+
+Breakpoint 4, swap (a=0x8005690, b=0x80056a4) at sort.c:6
+6       *b = t;
+
+command:
+p *0x8005690@5
+
+output2:
+$1 = {-2, 2, 6, -2, 1}
+
+Second execute case:
+commands:
+break sort.c:14
+break sort.c:35
+break sort.c:38
+break sort.c:6
+r test1.txt
+c
+c
+c
+c
+c
+c
+c
+c
+c
+
+output1:
+Continuing.
+
+Breakpoint 4, swap (a=0x8005690, b=0x80056a4) at sort.c:6
+6       *b = t;
+
+command:
+p *0x8005690@5
+
+output2:
+$2 = {2, 2, 6, -2, 1}
+
+Analysis the relationship between the output and the erroneous behaviour:
+According to the output1, in both  cases, after the first heapify of the whole array
+tree, the code executes the swap (a=0x8005690, b=0x80056a4). But for the array 
+with length 5, it's array address starts from 0x8005690 to b=0x80056a3 as each 
+number takes 4 addresses in this code. So 0x80056a4 is out of array, but the code 
+stores a random number from the array in the address 0x80056a4, which may 
+results in the erroneous behaviour that after sorted, sometimes the largest number
+in the array disappear and one of the other numbers is copied once.
+
+
+
+
+Analysis of the bug:
+According to the analysis above, the cause of the bug is that after heaplify the whole
+array tree for the first time, the code will execute an operation that should not execute.
+that is swap (a=0x8005690, b=0x80056a4). And 0x80056a4 is out of array. Also, the
+code stores a random number from the array in the address 0x80056a4. After many
+attempts, I find that the random number has a high probability to be the largest
+number in the array. In this case, it makes no influince to execute the operation and
+the output of whole code is right. But when the random number is not the largest
+number in the array, the output of whole code is wrong as the the largest number
+in the array disappear and one of the other numbers is copied once.
+
+
+
+
+
+			
