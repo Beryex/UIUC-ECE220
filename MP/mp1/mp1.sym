@@ -1,0 +1,22 @@
+// Symbol table
+// Scope level 0:
+//	Symbol Name       Page Address
+//	----------------  ------------
+//	PRINT_SLOT        3000
+//	R0_value1         300F
+//	R2_value1         3010
+//	R7_value1         3011
+//	char_7_1          3012
+//	char_rest         3042
+//	PRINT_CENTERED    3047
+//	Compute_length    3050
+//	Next_part         305A
+//	Print_char        3060
+//	R0_value2         306E
+//	R2_value2         306F
+//	R3_value2         3070
+//	R4_value2         3071
+//	R7_value2         3072
+//	Leading_space     3073
+//	Trailing_space    308F
+

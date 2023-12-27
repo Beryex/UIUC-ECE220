@@ -1,0 +1,9 @@
+	.ORIG	x3000
+	AND R1,R1,#0
+	ADD R0,R1,#0
+	OUT
+	LD R0,Char
+	OUT
+	HALT
+Char	.FILL	x0021
+	.END

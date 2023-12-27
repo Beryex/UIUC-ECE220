@@ -1,0 +1,30 @@
+// Symbol table
+// Scope level 0:
+//	Symbol Name       Page Address
+//	----------------  ------------
+//	R0_OK             3012
+//	R1_OK             3016
+//	BITS              3017
+//	VLINE             3018
+//	R0_BAD            3019
+//	R1_BAD            3031
+//	test_str          3049
+//	PRINT_SLOT        3051
+//	R0_value1         3060
+//	R2_value1         3061
+//	R7_value1         3062
+//	char_7_1          3063
+//	char_rest         3093
+//	PRINT_CENTERED    3098
+//	Compute_length    30A1
+//	Next_part         30AB
+//	Print_char        30B1
+//	Next_char         30B4
+//	R0_value2         30C0
+//	R2_value2         30C1
+//	R3_value2         30C2
+//	R4_value2         30C3
+//	R7_value2         30C4
+//	Leading_space     30C5
+//	Trailing_space    30E1
+

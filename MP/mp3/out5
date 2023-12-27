@@ -1,0 +1,49 @@
+
+Welcome to the LC-3 simulator.
+
+The contents of the LC-3 tools distribution, including sources, management
+tools, and data, are Copyright (c) 2003 Steven S. Lumetta.
+
+The LC-3 tools distribution is free software covered by the GNU General
+Public License, and you are welcome to modify it and/or distribute copies
+of it under certain conditions.  The file COPYING (distributed with the
+tools) specifies those conditions.  There is absolutely no warranty for
+the LC-3 tools distribution, as described in the file NO_WARRANTY (also
+distributed with the tools).
+
+Have fun.
+
+
+--- halting the LC-3 ---
+
+PC=x0494 IR=xB1AE PSR=x0400 (ZERO)
+R0=x0000 R1=x7FFF R2=x0000 R3=x0000 R4=x0000 R5=x0000 R6=x0000 R7=x0490 
+                   x0494 x0FF9 BRNZP TRAP_HALT
+Loaded "extra.obj" and set PC to x6000
+Loaded "blocked.obj" and set PC to x5000
+Wrote x0000 to address x5020.
+Loaded "mp3.obj" and set PC to x3000
+      | Mon  | Tue  | Wed  | Thu  | Fri  
+07:00 |      |      |      |      |      
+08:00 |      |      |      |      |  B   
+09:00 |      |  D   |      |  D   |  D   
+10:00 |blockA|      |      |      |      
+11:00 |  C   |  C   |  C   |  C   |  C   
+12:00 |      |      |      |      |      
+13:00 |  A   |      |  A   |      |  A   
+14:00 |      |      |      |      |      
+15:00 |  E   |  E   |  E   |      |alsoA 
+16:00 |      |      |      |blockF|      
+17:00 |  F   |      |      |  F   |      
+18:00 |      |      |      |      |      
+19:00 |      |      |      |      |      
+20:00 |      |      |      |      |      
+21:00 |      |      |      |      |      
+22:00 |      |      |      |      |      
+
+
+--- halting the LC-3 ---
+
+PC=x0494 IR=xB1AE PSR=x0400 (ZERO)
+R0=x0000 R1=x7FFF R2=x0000 R3=x4050 R4=x0010 R5=x0009 R6=x7FE2 R7=x0490 
+                   x0494 x0FF9 BRNZP TRAP_HALT
