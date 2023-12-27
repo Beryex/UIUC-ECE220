@@ -1,0 +1,49 @@
+This change log is for the WALY library itself.
+
+8 February 2013
+- fixed a bug with use of empty text in WALYWidget.cpp
+
+3 February 2013
+- set distinct values for SDLK constants in Android SDL stubs to avoid
+  errors with duplicate case values (constants taken from SDL headers)
+
+2 February 2013
+- enabled application definition of screen size, but screen size must
+  be static for lifetime of application for now (and WebOS is not prepared
+  to handle anything other than 320x480 yet)
+- 1000x1500 doesn't work in landscape on Android...not clear why...no, you
+  know, actual *** error message *** or anything.  (logcat spits out some
+  random internal failure...not terribly useful, since one can't predict
+  it from the actual API calls...those all succeed: setBuffersGeometry,
+  native window lock gives correctly sized buffer, but then distorts it
+  when putting on the screen...great.)   Oh, joy, it can't even handle
+  the full screen size of Android.  That's just great.  Seems to handle
+  500x800 (so it doesn't have to scale down if you turn it sideways).
+  I may have to try twiddling the "SurfaceHolder" (of the native activity's
+  window?  but I need to use the right thread) and call setFixedSize
+
+28 January 2013
+- tried to fix the rest of the 64-bit issues based on copy from student's 
+  machine; could be cleaner with mapping from queue_elt_t fields to 
+  void* in events...
+
+22 January 2013
+- found about 10-12 conversion errors (or warnings) on recent installation
+  of 64-bit Ubuntu this morning (student's machine); was able to get three
+  of them on the EWS machines with Linux build, so got rid of those;
+  need to find the others again
+
+19 January 2013
+- used Java reflection to support Android-14 by falling back on display
+  getMetrics when getRealMetrics (Android-17 call) is missing
+- made more aggressive about dealing with Android's stale decorview
+  (was waiting for a real event, such a mousedown...effectively was making
+  sure that user saw the stale results in skewed appearance)
+
+12 January 2013
+- fixed bug with connection to Android's hideKeyboard method (was getting
+  the showKeyboard method instead)
+- only API level 14 of Android (OS 4.0+, Ice Cream Sandwich) is needed
+  for WALY; that level is the first with OpenSLES support, so that level
+  is necessary
+
