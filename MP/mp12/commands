@@ -1,0 +1,5 @@
+color FF00FF
+move 100 12
+turn 7
+wait 4
+restart
