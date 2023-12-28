@@ -1,4 +1,4 @@
-# ECE 220: Computer Systems & Programming @ ZJUI Fall 2022 by Bryan Wang
+# ECE 220: Computer Systems & Programming @ UIUC Fall 2022 by Bryan Wang
 [Bryan Wang](https://github.com/Wang-Boyao) | ECE 220: Computer Systems & Programming, Fall 2022  
 Instructors:  
 [Steven Lumetta](https://ece.illinois.edu/about/directory/faculty/lumetta) @ University of Illinois Urbana-Champaign Institute  
@@ -11,7 +11,7 @@ This work is protected under the [GNU General Public License v3.0](https://www.g
 If you would like to incorporate any portion of code in this repository into your own work, please cite as follows:
 
 ```
-... ; This portion of code is written by Bryan Wang (https://github.com/Wang-Boyao/ZJUI-ECE220)
+... ; This portion of code is written by Bryan Wang (https://github.com/Wang-Boyao/UIUC-ECE220)
 ```
 
 THE AUTHOR OF THIS REPOSITORY SHALL **IN NO CASE** BE HELD LIABLE FOR ANY KIND OF ACADEMIC MISCONDUCT, INCLUDING BUT NOT LIMITED TO PLAGIARISM, AS A RESULT OF IMPROPER OR MISSING CITATION IN THE CORRESPONDING WORK.
