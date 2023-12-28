@@ -1,5 +1,5 @@
 # ECE 220: Computer Systems & Programming @ ZJUI Fall 2022 by Bryan Wang
-[Bryan Wang](boyaow2@illinois.edu) | ECE 220: Computer Systems & Programming, Fall 2022  
+[Bryan Wang](WangBoyao.02@outlook.com) | ECE 220: Computer Systems & Programming, Fall 2022  
 Instructors:  
 [Lumetta Steven Sam](lumetta@illinois.edu) @ University of Illinois at Urbana-Champaign  
 [Pavel Loskot](pavelloskot@intl.zju.edu.cn) @ Zhejiang University - University of Illinois Urbana-Champaign Institute  
